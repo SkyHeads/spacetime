@@ -37,7 +37,7 @@ export default function Home() {
           </div>
           <a
             href=""
-            className="inline-block rounded-full bg-green-500 px-5 py-3 font-alt text-sm uppercase text-black hover:bg-green-600"
+            className="inline-block rounded-full bg-green-500 px-5 py-3 font-alt text-sm uppercase text-black transition-colors hover:bg-green-700"
           >
             CADASTRAR LEMBRANÇA
           </a>
@@ -49,7 +49,7 @@ export default function Home() {
             href="https://nextjs.org/"
             target="_blank"
             rel="noreferrer"
-            className="underline hover:text-gray-100"
+            className="underline transition-colors hover:text-gray-100"
           >
             NEXTJS 14
           </a>
