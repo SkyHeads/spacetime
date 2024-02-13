@@ -7,12 +7,12 @@ export default function Home() {
       {/* Left */}
       <div className="relative flex flex-col items-start justify-between overflow-hidden border-r border-white/10 bg-[url(../assets/bg-stars.svg)] bg-cover px-28 py-16">
         {/* Blur */}
-        <div className=" absolute right-0 top-1/2 h-[288px] w-[526px] -translate-y-1/2 translate-x-1/2 rounded-full bg-purple-700 opacity-50 blur-full" />
+        <div className="absolute right-0 top-1/2 h-[288px] w-[526px] -translate-y-1/2 translate-x-1/2 rounded-full bg-purple-700 opacity-50 blur-full" />
         {/* Stripes */}
         <div className="absolute bottom-0 right-2 top-0 w-2 bg-stripes" />
         {/* Sign In */}
         <a
-          href=""
+          href="_blank"
           className="flex items-center gap-3 text-left transition-colors hover:text-gray-50"
         >
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-400 ">
@@ -40,6 +40,18 @@ export default function Home() {
             className="inline-block rounded-full bg-green-500 px-5 py-3 font-alt text-sm uppercase text-black hover:bg-green-600"
           >
             CADASTRAR LEMBRANÇA
+          </a>
+        </div>
+        {/* Copyright */}
+        <div className="text-sm leading-relaxed text-gray-200">
+          Feito com{' '}
+          <a
+            href="https://nextjs.org/"
+            target="_blank"
+            rel="noreferrer"
+            className="underline hover:text-gray-100"
+          >
+            NEXTJS 14
           </a>
         </div>
       </div>
