@@ -40,10 +40,10 @@ export default function App() {
       <View className="flex-1 items-center justify-center gap-6">
         <NLWLogo />
         <View className="space-y-2">
-          <Text className="font-title text-center text-2xl leading-tight text-gray-50">
+          <Text className="text-center font-title text-2xl leading-tight text-gray-50">
             Sua cápsula do tempo
           </Text>
-          <Text className="font-body text-center text-base leading-relaxed text-gray-100">
+          <Text className="text-center font-body text-base leading-relaxed text-gray-100">
             Colecione momentos marcantes da sua jornada e compartilhe (se
             quiser) com o mundo
           </Text>
@@ -58,7 +58,7 @@ export default function App() {
           </Text>
         </TouchableOpacity>
       </View>
-      <Text className="font-body text-center text-sm leading-relaxed text-gray-50">
+      <Text className="text-center font-body text-sm leading-relaxed text-gray-50">
         Feito com 💜 no NLW da Rocketseat
       </Text>
       <StatusBar style="light" translucent />
