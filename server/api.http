@@ -2,7 +2,7 @@
 GET http://localhost:3333/memories HTTP/1.1
 
 ###
-GET http://localhost:3333/memories/925220af-4927-4f9a-99eb-ba40cd4f7cb7 HTTP/1.1
+GET http://localhost:3333/memories/ca01f056-33f5-4954-90af-87beca857ede HTTP/1.1
 
 ###
 POST http://localhost:3333/memories HTTP/1.1
@@ -32,5 +32,5 @@ POST http://localhost:3333/register HTTP/1.1
 Content-Type: application/json
 
 {
-  "code": "09cc1a6cd77496c0e795"
+  "code": "2d5b3a2d86a5638d9fe5"
 }
