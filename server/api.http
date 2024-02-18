@@ -32,5 +32,5 @@ POST http://localhost:3333/register HTTP/1.1
 Content-Type: application/json
 
 {
-  "code": "2d5b3a2d86a5638d9fe5"
+  "code": "18f5d1baadb52c32ad81"
 }
