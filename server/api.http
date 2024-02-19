@@ -1,5 +1,6 @@
 ###
 GET http://localhost:3333/memories HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQnJ1bm8gRmVybmFuZGVzIiwiYXZhdGFyVXJsIjoiaHR0cHM6Ly9hdmF0YXJzLmdpdGh1YnVzZXJjb250ZW50LmNvbS91LzQzNzkzNTkyP3Y9NCIsInN1YiI6ImRmZDViNDg5LWUwZTMtNDVmNC04YWE1LTcyNTI3NTQ5YzAwNCIsImlhdCI6MTcwODMyMDg2MSwiZXhwIjoxNzA4NDA3MjYxfQ.KPf6ZDmrBP8W6WNn8hZUosmLHCLDRf2H7tnsOZ9j0ys
 
 ###
 GET http://localhost:3333/memories/ca01f056-33f5-4954-90af-87beca857ede HTTP/1.1
@@ -32,5 +33,5 @@ POST http://localhost:3333/register HTTP/1.1
 Content-Type: application/json
 
 {
-  "code": "18f5d1baadb52c32ad81"
+  "code": "584e3b7c27ad4fe48058"
 }
