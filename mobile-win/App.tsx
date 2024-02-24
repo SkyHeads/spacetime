@@ -15,6 +15,7 @@ import {
 } from '@expo-google-fonts/roboto'
 
 import { BaiJamjuree_700Bold } from '@expo-google-fonts/bai-jamjuree'
+import { api } from './src/lib/api'
 
 const StyledStripes = styled(Stripes)
 
@@ -50,7 +51,15 @@ export default function App() {
 
     if (response?.type === 'success') {
       const { code } = response.params
-      console.log(code)
+
+      api
+        .post('/register', {
+          code,
+        })
+        .then((response) => {
+          const { token } = response.data
+          console.log(token)
+        })
     }
   }, [response])
 
