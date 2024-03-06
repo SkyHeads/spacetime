@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar'
 import { Text, View, ImageBackground, TouchableOpacity } from 'react-native'
 import { useEffect } from 'react'
 import { makeRedirectUri, useAuthRequest } from 'expo-auth-session'
+import * as SecureStore from 'expo-secure-store'
 import { styled } from 'nativewind'
 
 import bluerBg from './src/assets/bg-blur.png'
@@ -58,7 +59,12 @@ export default function App() {
         })
         .then((response) => {
           const { token } = response.data
+
+          SecureStore.setItemAsync('token', token)
           console.log(token)
+        })
+        .catch((error) => {
+          console.log(error)
         })
     }
   }, [response])
