@@ -1,13 +1,14 @@
+import { useRouter } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
 import { Text, View, ImageBackground, TouchableOpacity } from 'react-native'
-import { useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 import { makeRedirectUri, useAuthRequest } from 'expo-auth-session'
 import * as SecureStore from 'expo-secure-store'
 import { styled } from 'nativewind'
 
-import bluerBg from './src/assets/bg-blur.png'
-import Stripes from './src/assets/stripes.svg'
-import NLWLogo from './src/assets/nlw-spacetime-logo.svg'
+import bluerBg from '../src/assets/bg-blur.png'
+import Stripes from '../src/assets/stripes.svg'
+import NLWLogo from '../src/assets/nlw-spacetime-logo.svg'
 
 import {
   useFonts,
@@ -16,7 +17,7 @@ import {
 } from '@expo-google-fonts/roboto'
 
 import { BaiJamjuree_700Bold } from '@expo-google-fonts/bai-jamjuree'
-import { api } from './src/lib/api'
+import { api } from '../src/lib/api'
 
 const StyledStripes = styled(Stripes)
 
@@ -28,6 +29,8 @@ const discovery = {
 }
 
 export default function App() {
+  const router = useRouter()
+
   const [hasLoadedFonts] = useFonts({
     Roboto_400Regular,
     Roboto_700Bold,
@@ -43,31 +46,28 @@ export default function App() {
     discovery,
   )
 
-  useEffect(() => {
-    // console.log(
-    //   makeRedirectUri({
-    //     scheme: 'nlwspacetime',
-    //   }),
-    // )
+  const handleGithubOAuthCode = useCallback(
+    async (code: string) => {
+      const response = await api.post('/register', {
+        code,
+      })
 
+      const { token } = response.data
+
+      await SecureStore.setItemAsync('token', token)
+
+      router.push('/memories')
+    },
+    [router],
+  )
+
+  useEffect(() => {
     if (response?.type === 'success') {
       const { code } = response.params
 
-      api
-        .post('/register', {
-          code,
-        })
-        .then((response) => {
-          const { token } = response.data
-
-          SecureStore.setItemAsync('token', token)
-          console.log(token)
-        })
-        .catch((error) => {
-          console.log(error)
-        })
+      handleGithubOAuthCode(code)
     }
-  }, [response])
+  }, [response, handleGithubOAuthCode])
 
   if (!hasLoadedFonts) {
     return null
