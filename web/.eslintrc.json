@@ -4,6 +4,7 @@
     "@rocketseat/eslint-config/react"
   ],
   "rules": {
-    "no-useless-return": "off"
+    "no-useless-return": "off",
+    "@next/next/no-img-element": "off"
   }
 }
