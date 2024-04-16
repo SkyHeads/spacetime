@@ -45,7 +45,7 @@ export default function Memories() {
 
   useEffect(() => {
     loadMemories()
-  }, [memories])
+  }, [])
 
   return (
     <ScrollView className='flex-1 px-8' contentContainerStyle={{ paddingBottom: bottom, paddingTop: top }}>
