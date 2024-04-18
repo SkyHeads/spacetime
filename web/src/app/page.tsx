@@ -57,7 +57,7 @@ export default async function Home() {
             </p>
             <Link
               href={`/memories/${memory.id}`}
-              className="flex items-center gap-2 text-sm text-gray-200 hover:text-gray-100"
+              className="w-34 inline-flex items-center gap-2 rounded-full bg-green-500 px-5 py-3 font-alt text-sm uppercase leading-none text-black hover:bg-green-600"
             >
               Ler mais
               <ArrowRight className="h-4 w-4" />
