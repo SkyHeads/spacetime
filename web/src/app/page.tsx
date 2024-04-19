@@ -1,12 +1,8 @@
 import { cookies } from 'next/headers'
-import dayjs from 'dayjs'
-import ptBR from 'dayjs/locale/pt-br'
 import { api } from '@/lib/api'
 
 import { EmptyMemories } from '@/components/EmptyMemories'
 import Timeline from '@/components/Timeline'
-
-dayjs.locale(ptBR)
 
 interface Memory {
   id: string

@@ -4,8 +4,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import dayjs from 'dayjs'
+import ptBr from 'dayjs/locale/pt-br'
 import classNames from 'classnames'
 import { useState } from 'react'
+
+dayjs.locale(ptBr)
 
 interface Memory {
   id: string

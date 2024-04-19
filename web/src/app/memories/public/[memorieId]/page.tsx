@@ -1,9 +1,12 @@
 import { EmptyMemories } from '@/components/EmptyMemories'
 import { api } from '@/lib/api'
 import dayjs from 'dayjs'
+import ptBr from 'dayjs/locale/pt-br'
 import { ArrowLeft } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+
+dayjs.locale(ptBr)
 
 interface Memory {
   id: string

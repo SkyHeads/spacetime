@@ -1,9 +1,12 @@
 import { api } from '@/lib/api'
 import dayjs from 'dayjs'
+import ptBr from 'dayjs/locale/pt-br'
 import { ArrowLeft } from 'lucide-react'
 import { cookies } from 'next/headers'
 import Image from 'next/image'
 import Link from 'next/link'
+
+dayjs.locale(ptBr)
 
 interface Memory {
   id: string
