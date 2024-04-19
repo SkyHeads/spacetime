@@ -10,7 +10,7 @@ export async function memoriesPublicRoutes(app: FastifyInstance) {
         isPublic: true,
       },
       orderBy: {
-        createdAt: 'asc',
+        createdAt: 'desc',
       },
     })
 
