@@ -82,7 +82,7 @@ export default function Timeline({
                 {memory.excerpt}
               </p>
               <Link
-                href={`/memories/${memory.id}`}
+                href={`/memories/private/${memory.id}`}
                 className="w-34 inline-flex items-center gap-2 rounded-full bg-green-500 px-5 py-3 font-alt text-sm uppercase leading-none text-black hover:bg-green-600"
               >
                 Ler mais
@@ -110,7 +110,7 @@ export default function Timeline({
                 {memory.excerpt}
               </p>
               <Link
-                href={`/memories/${memory.id}`}
+                href={`/memories/public/${memory.id}`}
                 className="w-34 inline-flex items-center gap-2 rounded-full bg-green-500 px-5 py-3 font-alt text-sm uppercase leading-none text-black hover:bg-green-600"
               >
                 Ler mais

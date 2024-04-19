@@ -1,4 +1,3 @@
-import { EmptyMemories } from '@/components/EmptyMemories'
 import { api } from '@/lib/api'
 import dayjs from 'dayjs'
 import { ArrowLeft } from 'lucide-react'
@@ -8,9 +7,20 @@ import Link from 'next/link'
 
 interface Memory {
   id: string
+  userId: string
   coverUrl: string
   content: string
+  isPublic: boolean
   createdAt: string
+}
+
+interface User {
+  id: string
+  githubId: string
+  name: string
+  login: string
+  avatarUrl: string
+  memories: Memory[]
 }
 
 interface memorieIdProps {
@@ -28,11 +38,11 @@ export default async function MemorieId({ params }: memorieIdProps) {
     },
   })
 
-  if (!response) {
-    return <EmptyMemories />
-  }
-
   const memory: Memory = response.data
+
+  const responseUser = await api.get(`/user/${memory.userId}`)
+
+  const user: User = responseUser.data
 
   return (
     <div className="flex flex-1 flex-col gap-10 p-8">
@@ -47,6 +57,29 @@ export default async function MemorieId({ params }: memorieIdProps) {
           height={280}
           className="aspect-video w-full rounded-lg object-cover"
         />
+        <div className="flex items-center gap-3 text-left">
+          <Image
+            src={user.avatarUrl}
+            className="h-10 w-10 rounded-full"
+            width={40}
+            height={40}
+            alt=""
+          />
+          <div>
+            <h1 className="text-sm leading-snug text-gray-50">
+              {user.name}{' '}
+              <a
+                href={`https://github.com/${user.login}`}
+                target="_blank"
+                className="text-gray-100 underline"
+                rel="noreferrer"
+              >
+                (@<span className="capitalize">{user.login}</span>)
+              </a>
+            </h1>
+            <p className="text-sm leading-snug">Autor da memória</p>
+          </div>
+        </div>
         <p className="text-lg leading-relaxed text-gray-100">
           {memory.content}
         </p>
