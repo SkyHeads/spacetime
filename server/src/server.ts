@@ -10,6 +10,8 @@ import { resolve } from 'path'
 import { authRoutes } from './routes/auth'
 import { memoriesRoutes } from './routes/memories'
 import { uploadRoutes } from './routes/upload'
+import { memoriesPublicRoutes } from './routes/memories-public'
+import { usersRoutes } from './routes/users'
 
 const app = fastify()
 
@@ -27,8 +29,10 @@ app.register(jwt, {
 })
 
 app.register(memoriesRoutes)
+app.register(memoriesPublicRoutes)
 app.register(authRoutes)
 app.register(uploadRoutes)
+app.register(usersRoutes)
 
 app
   .listen({

@@ -1,11 +1,10 @@
-import { EmptyMemories } from '@/components/EmptyMemories'
-import { api } from '@/lib/api'
 import { cookies } from 'next/headers'
 import dayjs from 'dayjs'
 import ptBR from 'dayjs/locale/pt-br'
-import Image from 'next/image'
-import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import { api } from '@/lib/api'
+
+import { EmptyMemories } from '@/components/EmptyMemories'
+import Timeline from '@/components/Timeline'
 
 dayjs.locale(ptBR)
 
@@ -18,6 +17,10 @@ interface Memory {
 
 export default async function Home() {
   const isAuthenticated = cookies().has('token')
+
+  const responseMemoriesPublic = await api.get('/memories/public')
+
+  const memoriesPublic: Memory[] = responseMemoriesPublic.data
 
   if (!isAuthenticated) {
     return <EmptyMemories />
@@ -38,33 +41,6 @@ export default async function Home() {
   }
 
   return (
-    <div className="flex flex-col gap-10 p-8">
-      {memories.map((memory) => {
-        return (
-          <div key={memory.id} className="space-y-4">
-            <time className=" -ml-8 flex items-center gap-2 text-sm text-gray-100 before:h-px before:w-5 before:bg-gray-50">
-              {dayjs(memory.createdAt).format('D[ de ]MMMM[, ]YYYY')}
-            </time>
-            <Image
-              src={memory.coverUrl}
-              alt=""
-              width={592}
-              height={280}
-              className="aspect-video w-full rounded-lg object-cover"
-            />
-            <p className="text-lg leading-relaxed text-gray-100">
-              {memory.excerpt}
-            </p>
-            <Link
-              href={`/memories/${memory.id}`}
-              className="w-34 inline-flex items-center gap-2 rounded-full bg-green-500 px-5 py-3 font-alt text-sm uppercase leading-none text-black hover:bg-green-600"
-            >
-              Ler mais
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-        )
-      })}
-    </div>
+    <Timeline myMemoriesData={memories} memoriesPublicData={memoriesPublic} />
   )
 }
