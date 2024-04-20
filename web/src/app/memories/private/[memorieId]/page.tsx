@@ -5,6 +5,7 @@ import { ArrowLeft } from 'lucide-react'
 import { cookies } from 'next/headers'
 import Image from 'next/image'
 import Link from 'next/link'
+import { CopyToClipBoard } from '@/components/CopyToClipBoard'
 
 dayjs.locale(ptBr)
 
@@ -86,6 +87,9 @@ export default async function MemorieId({ params }: memorieIdProps) {
         <p className="text-lg leading-relaxed text-gray-100">
           {memory.content}
         </p>
+        <div className="flex flex-col items-center gap-2 md:flex-row">
+          {memory.isPublic && <CopyToClipBoard memorieId={params.memorieId} />}
+        </div>
         <Link
           href="/"
           className="w-34 inline-flex items-center gap-2 rounded-full bg-green-500 px-5 py-3 font-alt text-sm uppercase leading-none text-black hover:bg-green-600"
