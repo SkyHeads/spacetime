@@ -2,8 +2,18 @@
 
 import React, { ChangeEvent, useState } from 'react'
 
-export function MediaPicker() {
-  const [preview, setPreview] = useState<string | null>(null)
+interface MediaPickerProps {
+  previewInitialValue?: string | undefined
+  setIsFileSelected?: (value: boolean) => any
+}
+
+export function MediaPicker({
+  previewInitialValue,
+  setIsFileSelected,
+}: MediaPickerProps) {
+  const [preview, setPreview] = useState<string | null>(
+    previewInitialValue || null,
+  )
 
   function onFileSelected(event: ChangeEvent<HTMLInputElement>) {
     const { files } = event.target
@@ -13,6 +23,10 @@ export function MediaPicker() {
     }
 
     const urlPreview = URL.createObjectURL(files[0])
+
+    if (setIsFileSelected) {
+      setIsFileSelected(true)
+    }
 
     setPreview(urlPreview)
   }
