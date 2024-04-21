@@ -90,13 +90,21 @@ export default async function MemorieId({ params }: memorieIdProps) {
         <div className="flex flex-col items-center gap-2 md:flex-row">
           {memory.isPublic && <CopyToClipBoard memorieId={params.memorieId} />}
         </div>
-        <Link
-          href="/"
-          className="w-34 inline-flex items-center gap-2 rounded-full bg-green-500 px-5 py-3 font-alt text-sm uppercase leading-none text-black hover:bg-green-600"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          Voltar
-        </Link>
+        <div className="flex flex-row items-center gap-2">
+          <Link
+            href={`/memories/update/${params.memorieId}`}
+            className="inline-block self-end rounded-full bg-green-500 px-5 py-3 font-alt text-sm uppercase leading-none text-black transition-colors hover:bg-green-600 md:self-start"
+          >
+            Editar memória
+          </Link>
+          <Link
+            href="/"
+            className="w-34 inline-flex items-center gap-2 rounded-full bg-green-500 px-5 py-3 font-alt text-sm uppercase leading-none text-black hover:bg-green-600"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Voltar
+          </Link>
+        </div>
       </div>
     </div>
   )
